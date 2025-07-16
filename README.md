@@ -7,4 +7,4 @@ page load.
 
 The layout is styled with a clean look using the Roboto font and a subtle
 background gradient. A small SVG favicon is included and can be replaced
-to personalize the page. Bookmarks can be edited directly in `index.html`.
+

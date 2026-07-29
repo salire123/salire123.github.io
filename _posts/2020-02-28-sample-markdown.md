@@ -1,100 +1,452 @@
----
-layout: post
-title: Sample blog post to learn markdown tips
-subtitle: There's lots to learn!
-gh-repo: daattali/beautiful-jekyll
-gh-badge: [star, fork, follow]
-tags: [test]
-comments: true
-mathjax: true
-author: Bill Smith
----
+ 
+1.1 Initial Console Setup 
 
-{: .box-success}
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/tables/etc.<br/>I also encourage you to look at the [code that created this post](https://raw.githubusercontent.com/daattali/beautiful-jekyll/master/_posts/2020-02-28-sample-markdown.md) to learn some more advanced tips about using markdown in Beautiful Jekyll.
+Perform these steps from the serial / VMware console before accessing the Web UI. 
 
-**Here is some bold text**
+ 
 
-## Here is a secondary heading
+1.1.1 Connect to the console 
 
-[This is a link to a different site](https://deanattali.com/) and [this is a link to a section inside this page](#local-urls).
+Open your serial/VMware console so you can type commands directly on the device. 
 
-Here's a table:
+1.1.2 Log in 
 
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
+Username : Admin  
 
-You can use [MathJax](https://www.mathjax.org/) to write LaTeX expressions. For example:
-When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+Password : Admin 
 
-How about a yummy crepe?
+1.1.3 Enter enable mode 
 
-![Crepe](https://beautifuljekyll.com/assets/img/crepe.jpg)
+A screenshot of a computer program
 
-It can also be centered!
+AI-generated content may be incorrect.en  
 
-![Crepe](https://beautifuljekyll.com/assets/img/crepe.jpg){: .mx-auto.d-block :}
+Password : Admin 
 
-Here's a code chunk:
+1.1.4 Enter the network configuration context 
 
-~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-~~~
+configure network interface network-if 0 
 
-And here is the same code with syntax highlighting:
+1.1.5 Assign IP settings 
 
-```javascript
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-```
+ip <IP_ADDRESS>  
 
-And here is the same code yet again but with line numbers:
+gateway <GATEWAY_IP>  
 
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-{% endhighlight %}
+prefix-length <PREFIX> 
 
-## Boxes
-You can add notification, warning and error boxes like this:
+1.1.6 Activate the configuration 
 
-### Notification
+activate 
 
-{: .box-note}
-**Note:** This is a notification box.
+1.1.7 Verify the result 
 
-### Warning
+display 
 
-{: .box-warning}
-**Warning:** This is a warning box.
+ 
 
-### Error
+1.2 Web-UI Setup  
 
-{: .box-error}
-**Error:** This is an error box.
+1.2.1 Temp-address your PC 
 
-## Local URLs in project sites {#local-urls}
+Set any free IP in 192.168.0.0/24 (e.g. 192.168.0.10). 
 
-When hosting a *project site* on GitHub Pages (for example, `https://USERNAME.github.io/MyProject`), URLs that begin with `/` and refer to local files may not work correctly due to how the root URL (`/`) is interpreted by GitHub Pages. You can read more about it [in the FAQ](https://beautifuljekyll.com/faq/#links-in-project-page). To demonstrate the issue, the following local image will be broken **if your site is a project site:**
+1.2.2 Open the factory Web-UI 
 
-![Crepe](/assets/img/crepe.jpg)
+Browse to https://192.168.0.2 → log in with Admin / Admin. 
 
-If the above image is broken, then you'll need to follow the instructions [in the FAQ](https://beautifuljekyll.com/faq/#links-in-project-page). Here is proof that it can be fixed:
+1.2.3 Navigate to the interface settings 
 
-![Crepe]({{ '/assets/img/crepe.jpg' | relative_url }})
+IP Network → Core Entities → IP Interfaces. 
 
-<details markdown="1">
-<summary>Click here!</summary>
-Here you can see an **expandable** section
-</details>
+1.2.4 Edit the management port 
+
+Select o+m+c → enter New IP / Prefix Length / Gateway → Save. 
+
+A screenshot of a computer
+
+AI-generated content may be incorrect. 
+
+1.2.5 Activate the change 
+
+Click Activate / Apply (label varies). 
+
+1.2.6 Move your PC to the new subnet 
+
+Reconfigure your PC with an IP that matches the interface’s new network. 
+
+1.2.7 Reconnect & verify 
+
+Browse to https://<NEW_IP> → log in → confirm the interface shows Up with the new address. 
+
+2. Network & Certificate 
+
+2.1 Sign in to the Web UI 
+
+Sign in to the Web UI (Username / Password: Admin / Admin). 
+
+2.2 Change the IP Inerfaces 
+
+Path: IP NETWORK → CORE ENTITIES → IP Interfaces 
+
+A screenshot of a computer
+
+AI-generated content may be incorrect.If only one interface exists, add DNS to it.  
+
+If two + interfaces are needed, create an additional interface. 
+
+ 
+
+ 
+
+2.3 NAT Translation (optional) 
+
+Path: IP NETWORK → CORE ENTITIES → NAT Translation – add rules if the SBC is behind NAT. 
+A screenshot of a computer
+
+AI-generated content may be incorrect. 
+
+ 
+
+2.4 TLS Certificate 
+
+A valid server certificate is required before binding the Teams SIP interface to TLS. 
+
+A screenshot of a computer
+
+AI-generated content may be incorrect.Step 1 – Open TLS ContextPath: Setup → TLS Contexts → Index 0 / Name default → Change Certificate ». 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Step 2 – Upload Key Pair & Certificate 
+
+A screenshot of a computer
+
+AI-generated content may be incorrect.(Optional) Enter private‑key pass‑phrase. 
+
+Load Private Key File (.pem / .pfx) 
+
+Load Device Certificate File (public PEM) 
+
+ 
+
+ 
+
+3  SBC Core Configuration  
+
+3.1  Media Realms 
+
+UDP Port Start 
+
+Max Media Session Legs 
+
+IPv4 Interface* 
+
+7000 
+
+100 
+
+Interface bound to SIP‑trunk network 
+
+6000 
+
+100 
+
+Interface with public IP 
+
+ 
+
+ 
+
+ 
+
+*Use actual interface names from IP Interfaces. 
+
+A screenshot of a computer
+
+AI-generated content may be incorrect. 
+
+ 
+
+ 
+
+3.2  SIP Interfaces 
+
+Index 
+
+Name 
+
+UDP 
+
+TCP 
+
+TLS 
+
+TCP Keep‑alive 
+
+Media Realm 
+
+TLS Context 
+
+Notes 
+
+0 
+
+SIPinterface_0 
+
+— 
+
+0 
+
+0 
+
+— 
+
+— 
+
+— 
+
+Keep default (work‑around for firmware bug). 
+
+1 
+
+SIPTrunk 
+
+5060 
+
+0 
+
+0 
+
+— 
+
+SIPTrunk 
+
+— 
+
+Production SIP trunk (UDP‑only). 
+
+2 
+
+Teams 
+
+0 
+
+0 
+
+5061 
+
+Enabled 
+
+Teams 
+
+Teams 
+
+Microsoft Teams Direct Routing (TLS‑only). 
+
+ 
+
+A screenshot of a computer
+
+AI-generated content may be incorrect.
+ 
+
+3.3  Proxy Sets & Addresses 
+
+Proxy Sets 
+Path: SIGNALING & MEDIA → CORE ENTITIES → Proxy Sets 
+
+Index 
+
+Name 
+
+SBC IPv4 SIP Interface 
+
+TLS Context 
+
+Keep‑Alive 
+
+Hot Swap 
+
+LB Method 
+
+1 
+
+SIPTrunk 
+
+SIPTrunk 
+
+Default 
+
+Using OPTIONS 
+
+— 
+
+— 
+
+2 
+
+Teams 
+
+Teams 
+
+Teams 
+
+Using OPTIONS 
+
+Enable 
+
+Random Weights 
+
+ 
+
+Proxy Addresses Proxy Set SIPTrunk 
+
+Index 
+
+Proxy Address 
+
+Transport 
+
+Priority 
+
+Weight 
+
+0 
+
+siptrunk.com:5060 
+
+UDP 
+
+0 
+
+0 
+
+ 
+
+Proxy Set Teams 
+
+Index 
+
+Proxy Address 
+
+Transport 
+
+Priority 
+
+Weight 
+
+0 
+
+sip.pstnhub.microsoft.com:5061 
+
+TLS 
+
+1 
+
+1 
+
+1 
+
+sip2.pstnhub.microsoft.com:5061 
+
+TLS 
+
+2 
+
+1 
+
+2 
+
+sip3.pstnhub.microsoft.com:5061 
+
+TLS 
+
+3 
+
+1 
+
+ 
+
+ 
+
+3.4 configuring Coder Groups 
+
+ 
+
+3.5 Configuring IP Profiles 
+
+Teams: 
+
+ 
+
+ 
+
+SIPTrunk: 
+
+ 
+
+ 
+
+ 
+
+3.6  IP Groups 
+
+Path: SIGNALING & MEDIA → CORE ENTITIES → IP Groups – map each group to its SIP Interface, Proxy Set, Media Realm, and IP Profile. 
+ 
+
+ 
+
+ 
+
+3.7 SRTP (Media Security) 
+
+Path: SIGNALING & MEDIA → MEDIA → Media Security → set Media Security to Enable. 
+
+ 
+
+3.8 Message Manipulations 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+3.9 Configuring Message Condition Rules 
+
+Name : Teams-Contact 
+
+Condition : header.contact.url.host contains 'pstnhub.microsoft.com' 
+
+ 
+
+3.10 Configuring Classification Rules 
+
+ 
+
+ 
+
+3.11 Configuring IP-to-IP Call Routing Rules 
+
+Path: SIGNALING & MEDIA → SBC → Routing → IP‑to‑IP Routing 
+
+Add bidirectional rules SIPTrunk ⇆ Teams specifying the appropriate IP Groups, manipulations, and media security. 
+
+Configure routing rules as shown in the table below:
